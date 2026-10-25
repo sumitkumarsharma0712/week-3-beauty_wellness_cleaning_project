@@ -1,0 +1,26 @@
+{
+  "python": "3.12.3",
+  "pandas": "3.0.2",
+  "numpy": "2.4.4",
+  "scikit_learn": "1.8.0",
+  "random_seed": 42,
+  "reference_date": "2026-10-20",
+  "config_sha256": "6d4c64456f1f393f663bb0f354d6c6e463749a10c50c7e393c7bffa04f651b9a",
+  "raw_file_sha256": "a48c9250082f96826318a39ec6a2078db20d1041d6f6a8e811196d21963767f6",
+  "raw_rows": 5250,
+  "clean_rows": 4644,
+  "outputs": {
+    "clean": {
+      "path": "data/processed/beauty_wellness_clean.csv",
+      "sha256": "55b3858b5af4583d53606af2cced5df72ddf58d332f823ed64310e31b9e90295"
+    },
+    "ml_ready": {
+      "path": "data/processed/beauty_wellness_ml_ready.csv",
+      "sha256": "e46de872d1d70d4203f75731a3237903aa8b7417c8334b853cefd81074a95cf2"
+    },
+    "quarantine": {
+      "path": "data/processed/quarantine_rows.csv",
+      "sha256": "2a623a74f8690b4c4820ee48efb51ad5163fedd580893bc05f1edb4ab4be032a"
+    }
+  }
+}

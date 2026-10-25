@@ -1,0 +1,54 @@
+step,issue,count,action
+missing,"placeholder tokens ('N/A', '?', '-', ...)",2665,converted to true missing values
+duplicates,exact duplicate rows,150,dropped (kept first)
+categoricals,inconsistent labels in 'brand',832,mapped to canonical label (exact/synonym/fuzzy)
+categoricals,inconsistent labels in 'category',1156,mapped to canonical label (exact/synonym/fuzzy)
+categoricals,inconsistent labels in 'skin_type',749,mapped to canonical label (exact/synonym/fuzzy)
+categoricals,inconsistent labels in 'gender',1158,mapped to canonical label (exact/synonym/fuzzy)
+categoricals,inconsistent labels in 'city',1016,mapped to canonical label (exact/synonym/fuzzy)
+categoricals,inconsistent labels in 'purchase_channel',821,mapped to canonical label (exact/synonym/fuzzy)
+categoricals,would_recommend written as Y/1/TRUE/...,3896,mapped to Yes/No
+numeric,prices in USD/EUR,524,"converted to INR at fixed rates {'INR': 1.0, 'USD': 83.0, 'EUR': 90.0}"
+numeric,"sizes in mixed units (fl oz, oz, L, kg)",1426,converted to ml / g
+numeric,ratings on other scales / words / typos,778,rescaled to 1-5 or typo corrected
+numeric,ratings outside 1-5,141,set to missing (row quarantined later)
+dates,date strings in 8 possible formats in 'review_date',5056,parsed to datetime64 (day-first when ambiguous)
+dates,date strings in 8 possible formats in 'launch_date',4945,parsed to datetime64 (day-first when ambiguous)
+text,review texts with HTML/URLs/emoji/shouting/whitespace,1318,normalised
+text,ingredient lists with mixed separators/synonyms/duplicates,4924,"split, lower-cased, INCI-synonym mapped, de-duplicated"
+pii,invalid e-mail addresses,215,set to missing
+pii,invalid phone numbers,157,set to missing
+pii,raw e-mail / phone columns,5100,replaced by salted SHA-256 pseudonyms (privacy by design)
+duplicates,"near-duplicates (same customer+product+date, different review_id)",101,kept the most complete record
+validity,age outside 13-90,54,set to missing
+validity,size <=0 or implausibly large,48,set to missing
+validity,"price < Rs.20 or > Rs.100,000",61,set to missing
+validity,review_date in the future,48,set to NaT
+entity-master,product attribute 'brand' missing,67,filled from other reviews of the same product
+entity-master,product attribute 'size_value' missing,175,filled from other reviews of the same product
+entity-master,product attribute 'size_value' conflicting,711,replaced by most frequent value
+entity-master,product attribute 'size_unit' missing,127,filled from other reviews of the same product
+entity-master,product attribute 'size_unit' conflicting,22,replaced by most frequent value
+entity-master,product attribute 'launch_date' missing,154,filled from other reviews of the same product
+entity-master,product attribute 'spf' missing,84,filled from other reviews of the same product
+entity-master,product attribute 'ingredients_clean' missing,173,filled from other reviews of the same product
+entity-master,customer attribute 'age' missing,496,filled from the same customer's other reviews
+entity-master,customer attribute 'gender' missing,137,filled from the same customer's other reviews
+entity-master,customer attribute 'city' missing,127,filled from the same customer's other reviews
+entity-master,customer attribute 'skin_type' missing,458,filled from the same customer's other reviews
+entity-master,price inconsistent with product's median price (x10 / x0.1 errors),33,set to missing then re-filled
+entity-master,price missing,257,filled with product median price
+quarantine,missing or invalid rating (target variable),221,"rows removed from analysis set, saved for audit"
+quarantine,missing or invalid review_date,91,"rows removed from analysis set, saved for audit"
+quarantine,review_date before product launch_date,43,"rows removed from analysis set, saved for audit"
+imputation,age still missing,35,median age of gender group (flag age_imputed=1)
+imputation,'gender' still missing,9,filled with 'Unknown' category (keeps MNAR signal)
+imputation,'city' still missing,8,filled with 'Unknown' category (keeps MNAR signal)
+imputation,'skin_type' still missing,19,filled with 'Unknown' category (keeps MNAR signal)
+imputation,'skin_concern' still missing,186,filled with 'Unknown' category (keeps MNAR signal)
+imputation,'purchase_channel' still missing,83,filled with 'Unknown' category (keeps MNAR signal)
+imputation,'would_recommend' still missing,179,filled with 'Unknown' category (keeps MNAR signal)
+imputation,review text missing,219,empty string + has_review_text=0 flag (not imputed)
+outliers,statistical price outliers (IQR within category),76,flagged + winsorised copy kept (original preserved)
+outliers,"multivariate anomalies (Isolation Forest, 1%)",46,"flagged for review, not removed"
+outliers,rating-text sentiment mismatches,35,flagged (possible fake / mis-keyed ratings)

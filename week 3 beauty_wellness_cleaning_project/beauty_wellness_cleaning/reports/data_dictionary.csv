@@ -1,0 +1,58 @@
+column,dtype,description
+review_id,string,Unique review identifier
+customer_id,string,Pseudonymous customer key
+age,int64,"Customer age in years (13-90), imputed where unavailable (see age_imputed)"
+gender,string,Female / Male / Other / Unknown
+city,string,Standardised Indian city
+skin_type,string,Oily / Dry / Combination / Normal / Sensitive / Unknown
+skin_concern,string,Primary concern the product addresses
+review_date,datetime64[ns],Review date (datetime)
+product_id,string,Product key
+product_name,string,Marketing name
+brand,string,Canonical brand
+category,string,Canonical product category
+launch_date,datetime64[ns],Product launch date
+spf,float64,Sun protection factor claim (0 = none)
+rating,float64,Customer rating 1-5
+would_recommend,string,Yes / No / Unknown
+purchase_channel,string,Online / Store / App / Unknown
+price_inr,float64,"Price in INR (currency-converted, validated)"
+size_value,float64,Pack size in ml or g
+size_unit,string,ml (volume) or g (mass)
+review_text_clean,string,Cleaned review text
+ingredients_clean,string,Pipe-separated normalised ingredient list
+email_domain,object,E-mail provider domain
+email_hash,string,Salted SHA-256 pseudonym of e-mail
+phone_hash,string,Salted SHA-256 pseudonym of phone
+age_imputed,int64,1 if age was estimated
+size_value_imputed,int64,1 if size was estimated
+price_per_100,float64,INR per 100 ml/g (winsorised price)
+has_review_text,int64,
+review_length,Int64,
+review_word_count,int64,
+sentiment_score,float64,Lexicon sentiment -1..1
+sentiment_label,string,negative / neutral / positive
+rating_sentiment_mismatch,int64,1 if rating and text sentiment disagree
+review_year,int32,
+review_month,int32,
+review_quarter,int32,
+season,str,Indian season of the review month
+product_age_days,int64,Days between launch and review
+age_group,string,Age band
+is_sunscreen,int64,
+price_tier,string,Budget / Mid / Premium within category
+high_rating,int64,1 if rating >= 4 (classification target)
+has_fragrance,int64,
+has_alcohol,int64,
+has_paraben,int64,
+has_sulfate,int64,
+has_retinol,int64,
+has_niacinamide,int64,
+has_hyaluronic_acid,int64,
+has_vitamin_c,int64,
+n_ingredients,int64,Count of distinct ingredients
+price_outlier_iqr,int64,1 = IQR outlier within category
+price_outlier_mad,int64,1 = modified z-score outlier on price per 100
+price_inr_winsor,float64,Price capped at within-category IQR fences
+multivariate_outlier,int64,1 = Isolation Forest anomaly
+anomaly_score,float64,Isolation Forest decision score (lower = more anomalous)

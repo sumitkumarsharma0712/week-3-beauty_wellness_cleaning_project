@@ -1,0 +1,36 @@
+{
+  "raw_rows": 5250,
+  "clean_rows": 4644,
+  "quarantined_rows": 355,
+  "exact_duplicates_removed": 150,
+  "ml_features": 74,
+  "checks_passed": 22,
+  "checks_total": 22,
+  "scorecard": {
+    "completeness": {
+      "before": 96.5,
+      "after": 99.2
+    },
+    "uniqueness": {
+      "before": 95.2,
+      "after": 100.0
+    },
+    "validity": {
+      "before": 96.0,
+      "after": 100.0
+    },
+    "consistency": {
+      "before": 83.4,
+      "after": 100.0
+    },
+    "overall": {
+      "before": 92.8,
+      "after": 99.8
+    }
+  },
+  "quarantine_reasons": {
+    "missing or invalid rating (target variable)": 221,
+    "missing or invalid review_date": 91,
+    "review_date before product launch_date": 43
+  }
+}

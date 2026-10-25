@@ -1,0 +1,16 @@
+step,rows_in,rows_out,rows_removed,missing_cells_in,missing_cells_out,columns_out,seconds
+01 standardise column names,5250,5250,0,0,0,23,0.004
+02 normalise missing tokens,5250,5250,0,0,3272,23,0.073
+03 remove exact duplicates,5250,5100,150,3272,3187,23,0.013
+04 standardise categoricals,5100,5100,0,3187,3187,23,0.149
+05 parse numeric fields,5100,5100,0,3187,3458,24,0.048
+06 parse dates,5100,5100,0,3458,3458,24,0.037
+07 clean text & ingredients,5100,5100,0,3458,3458,24,0.041
+08 protect PII,5100,5100,0,3458,4160,25,0.021
+09 remove near-duplicates,5100,4999,101,4160,4083,25,0.019
+10 apply domain rules,4999,4999,0,4083,4294,25,0.004
+11 reconcile product/customer master,4999,4999,0,4294,2072,25,0.967
+12 quarantine unusable rows,4999,4644,355,2072,1621,25,0.016
+13 impute residual gaps,4644,4644,0,1621,883,27,0.023
+14 engineer features,4644,4644,0,883,1062,53,0.073
+15 detect & treat outliers,4644,4644,0,1062,1062,58,0.346

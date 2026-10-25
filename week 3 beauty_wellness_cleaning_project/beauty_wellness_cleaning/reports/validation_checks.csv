@@ -1,0 +1,23 @@
+check,passed,detail
+required columns present,True,
+no nulls in required columns,True,
+review_id unique,True,0 duplicates
+"no duplicate (customer, product, date)",True,
+rating within 1-5,True,
+age within 13-90,True,
+price positive and below hard cap,True,
+price within category ceiling (winsorised),True,
+size within plausible range,True,
+spf within 0-100,True,
+category canonical,True,
+brand canonical or Unknown,True,
+skin_type canonical or Unknown,True,
+city canonical or Unknown,True,
+review_date not in the future,True,
+review_date on/after launch_date,True,
+no raw PII columns,True,
+no infinite values,True,
+no NaN in model matrix,True,
+no inf in model matrix,True,
+train/test split present,True,
+standard-scaled train means ~0,True,scalers fitted on TRAIN only (no leakage)
